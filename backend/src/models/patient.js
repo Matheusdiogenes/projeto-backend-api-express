@@ -5,12 +5,28 @@ const patientSchema = new mongoose.Schema({
     type: String,
     require: true
   },
+  username: {
+    type: String,
+    unique: true,
+    require: true,
+    lowercase: true,
+    trim: true
+  },  
   email: {
     type: String,
     unique: true,
     require: true,
     lowercase: true
   },  
+  cpf: {
+    type: String,
+    unique: true,
+    require: true,
+    lowercase: true
+  },
+  exercise: {
+    type: [{type: String}]
+  },
   password: {
     type: String,
     require: true,

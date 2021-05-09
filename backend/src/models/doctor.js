@@ -11,6 +11,12 @@ const doctorSchema = new mongoose.Schema({
     require: true,
     lowercase: true
   },
+  cpf: {
+    type: String,
+    unique: true,
+    require: true,
+    lowercase: true
+  },
   specialty: {
     type: String,    
     require: true,
