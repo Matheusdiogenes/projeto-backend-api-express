@@ -28,7 +28,7 @@ module.exports = {
       const result = await Patient.findOneAndUpdate(query, {
         $pull: { exercise: { $in: req.body.exercise } }
       })      
-      return res.status(400).send({message: 'updated'})
+      return res.status(400).send({result})
     } catch (error) {
       return res.status(400).send({error})
     }
@@ -37,7 +37,7 @@ module.exports = {
   showExercise: async (req, res) => {
     try {
       const result = await Patient.findOne( { username: req.params['username'] } )
-      .select('exercise')      
+      .select('exercise')            
       return res.send( { result } )
     } catch (error) {
       return res.status(400).send({error})
