@@ -13,4 +13,6 @@ app.get('/', (req, res) => {
 app.use('/doctor', doctorRoutes)
 app.use('/patient', patientRoutes)
 
-app.listen(3000)
+const port = process.env.PORT || 3000
+
+app.listen(port, () => console.log(`Listen in http://localhost:${port}/`))
