@@ -1,7 +1,7 @@
 const mongoose = require('../database/db')
 
 const patientSchema = new mongoose.Schema({
-  name: {
+  name_p: {
     type: String,
     require: true
   },
@@ -29,8 +29,7 @@ const patientSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    require: true,
-    select: false
+    require: true    
   },
   createAt: {
     type: Date,

@@ -1,11 +1,17 @@
 const mongoose = require('../database/db')
 
 const doctorSchema = new mongoose.Schema({
-  name: {
+  name_d: {
     type: String,
     require: true
   },
   email: {
+    type: String,
+    unique: true,
+    require: true,
+    lowercase: true
+  },
+  username: {
     type: String,
     unique: true,
     require: true,
@@ -24,8 +30,7 @@ const doctorSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    require: true,
-    select: false
+    require: true,    
   },
   createAt: {
     type: Date,
