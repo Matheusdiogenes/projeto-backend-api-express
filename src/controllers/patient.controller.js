@@ -28,7 +28,7 @@ module.exports = {
       const result = await Patient.findOneAndUpdate(query, {
         $pull: { exercise: { $in: req.body.exercise } }
       })      
-      return res.status(400).send({result})
+      return res.status(400).send({response:'deleted'})
     } catch (error) {
       return res.status(400).send({error})
     }
@@ -41,6 +41,24 @@ module.exports = {
       return res.send( { result } )
     } catch (error) {
       return res.status(400).send({error})
+    }
+  },
+
+  show: async (req, res) => {
+    try {
+      const patient = await Patient.find({}).select(['username', 'name_p'])
+      return res.send( { patient } )
+    } catch (error) {
+      return res.status(400).send({error: 'error '})
+    }
+  },
+
+  delete: async (req, res) => {
+    try {
+      await Patient.findOneAndRemove({ username: req.params['username']})
+      return res.send( { status: 'deleted' } )
+    } catch (error) {
+      return res.status(400).send({error: 'error '})
     }
   },
 }

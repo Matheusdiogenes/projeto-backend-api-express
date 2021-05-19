@@ -12,10 +12,18 @@ module.exports = {
 
   show: async (req, res) => {
     try {
-      const doctor = await Doctor.find({}).select(['name', 'specialty'])
+      const doctor = await Doctor.find({}).select(['username', 'name_d', 'specialty'])
       return res.send( { doctor } )
     } catch (error) {
-      return res.status(400).send({error: 'error registration failed'})
+      return res.status(400).send({error: 'error '})
+    }
+  },
+  delete: async (req, res) => {
+    try {
+      const doctor = await Doctor.findOneAndRemove({ username: req.params['username']})
+      return res.send( { status: 'deleted' } )
+    } catch (error) {
+      return res.status(400).send({error: 'error '})
     }
   },
 }

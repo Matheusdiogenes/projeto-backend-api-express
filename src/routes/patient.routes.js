@@ -11,8 +11,8 @@ app.get('/show/exercise/:username', patient.showExercise)
 
 app.put('/update/exercise/:username', patient.deleteExercise)
 
-// app.delete('/delete/exercise/:username', (req, res) => {
-//   res.send('delete exercises')
-// })
+app.get('/show', patient.show)
+
+app.delete('/delete/:username', patient.delete)
 
 module.exports = app
